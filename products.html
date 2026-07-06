@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/enhancements.css">
+  <title>Nos Résines — REPCO</title>
+  <meta name="description" content="Découvrez la gamme complète de résines d'étanchéité REPCO : étanchéité liquide, anti-corrosion, eau potable, protection du bois, primaires et finitions.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    .product-category-tab {
+      padding: 0.6rem 1.25rem;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted-foreground);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+    .product-category-tab:hover,
+    .product-category-tab.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .product-grid-card {
+      display: flex;
+      flex-direction: column;
+      border-radius: 1.25rem;
+      border: 1px solid var(--border);
+      background: var(--card);
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease;
+    }
+    .product-grid-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 56px rgba(26,39,68,0.13);
+    }
+    .product-grid-img {
+      height: 240px;
+      background: #ffffff;
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-grid-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.6s cubic-bezier(0.22,1,0.36,1);
+    }
+    .product-grid-card:hover .product-grid-img img { transform: scale(1.06); }
+    .product-grid-header {
+      background: var(--primary);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.875rem 1.5rem;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .product-grid-card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 1rem; }
+    .product-grid-card-body p { flex: 1; }
+    .category-section { display: none; }
+    .category-section.active { display: block; }
+    .tabs-wrapper {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body class="__className_923bf1">
+  <div class="scroll-progress"></div>
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 py-5 bg-transparent">
+    <div class="mx-auto max-w-7xl px-6 flex items-center justify-between">
+      <a href="index.html" class="logo-link shrink-0">
+        <img src="images/logo-white.svg" alt="Repco" class="logo-svg" data-logo-light="images/logo-white.svg" data-logo-dark="images/logo-dark.svg">
+      </a>
+      <nav class="hidden lg:flex items-center gap-1">
+        <div class="relative nav-dropdown-wrap">
+          <button class="nav-dropdown-btn px-4 py-2 text-sm font-600 rounded-lg transition-all duration-200 nav-link-underline text-white/90 hover:text-white flex items-center gap-1">
+            Accueil
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="nav-dropdown-chevron transition-transform duration-200"><path d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg>
+          </button>
+          <div class="nav-dropdown-menu hidden absolute top-full left-0 mt-1 w-52 bg-card rounded-xl shadow-xl border border-border py-1 z-50">
+            <a href="index.html#about" class="block px-4 py-2.5 text-sm font-500 text-foreground hover:bg-secondary hover:text-accent transition-colors rounded-lg">Qui sommes-nous ?</a>
+            <a href="index.html#realisations" class="block px-4 py-2.5 text-sm font-500 text-foreground hover:bg-secondary hover:text-accent transition-colors rounded-lg">Actualités</a>
+          </div>
+        </div>
+        <a href="index.html#process" class="px-4 py-2 text-sm font-600 rounded-lg transition-all duration-200 nav-link-underline text-white/90 hover:text-white">Processus</a>
+        <a href="index.html#sectors" class="px-4 py-2 text-sm font-600 rounded-lg transition-all duration-200 nav-link-underline text-white/90 hover:text-white">Secteurs</a>
+        <a href="products.html" class="px-4 py-2 text-sm font-600 rounded-lg transition-all duration-200 nav-link-underline text-accent">Produits</a>
+        <a href="index.html#realisations" class="px-4 py-2 text-sm font-600 rounded-lg transition-all duration-200 nav-link-underline text-white/90 hover:text-white">Réalisations</a>
+        <a href="index.html#contact" class="px-4 py-2 text-sm font-600 rounded-lg transition-all duration-200 nav-link-underline text-white/90 hover:text-white">Contact</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="index.html#contact" class="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-700 bg-accent text-accent-foreground hover:opacity-90 transition-all duration-200 shadow-lg">Contactez-nous</a>
+        <button class="lg:hidden p-2 rounded-lg transition-colors text-white" aria-label="Ouvrir le menu">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="24" height="24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-primary text-primary-foreground flex flex-col p-8 lg:hidden">
+    <div class="flex items-center justify-between mb-12">
+      <a href="index.html" class="logo-link">
+        <img src="images/logo-white.svg" alt="Repco" class="logo-svg">
+      </a>
+      <button class="p-2 text-white/70 hover:text-white" aria-label="Fermer le menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="24" height="24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-2">
+      <a href="index.html" class="py-4 text-lg font-600 text-white/80 hover:text-white border-b border-white/10 transition-colors">Accueil</a>
+      <a href="index.html#about" class="py-4 text-lg font-600 text-white/80 hover:text-white border-b border-white/10 transition-colors">Qui sommes-nous ?</a>
+      <a href="index.html#sectors" class="py-4 text-lg font-600 text-white/80 hover:text-white border-b border-white/10 transition-colors">Secteurs</a>
+      <a href="products.html" class="py-4 text-lg font-600 text-accent border-b border-white/10 transition-colors">Produits</a>
+      <a href="index.html#realisations" class="py-4 text-lg font-600 text-white/80 hover:text-white border-b border-white/10 transition-colors">Réalisations</a>
+      <a href="index.html#contact" class="py-4 text-lg font-600 text-white/80 hover:text-white border-b border-white/10 transition-colors">Contact</a>
+    </nav>
+    <div class="mt-auto">
+      <a href="index.html#contact" class="w-full flex items-center justify-center py-4 rounded-xl bg-accent text-white font-700 text-base">Contactez-nous</a>
+    </div>
+  </div>
+
+  <main class="overflow-x-hidden">
+
+    <!-- Hero produits -->
+    <section class="relative min-h-[50vh] flex items-end overflow-hidden pt-32 pb-16 bg-primary">
+      <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 opacity-[0.04]" style="background-image:radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px);background-size:26px 26px"></div>
+        <div class="absolute top-0 right-0 w-[45vw] h-[45vw] rounded-full bg-accent opacity-10 blur-[130px] pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
+      </div>
+      <div class="relative z-10 mx-auto max-w-7xl px-6 w-full">
+        <div class="hero-content max-w-2xl">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-8 h-0.5 bg-accent"></div>
+            <span class="text-xs font-700 uppercase tracking-[0.3em] text-white/60">Nos Résines</span>
+          </div>
+          <h1 class="text-hero-xl text-white mb-6">Nos résines <span class="text-accent italic font-serif">d'étanchéité</span> liquide</h1>
+          <p class="text-lg text-white/70 leading-relaxed max-w-lg">Nos résines techniques sont qualifiées par le CSTB, certifiées ACS et HQE. Conçues pour offrir une protection durable en environnements industriels et énergétiques.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filtres catégories -->
+    <section class="bg-secondary border-b border-border sticky top-[72px] z-40 py-4">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="tabs-wrapper">
+          <button class="product-category-tab active" data-cat="all">Tous les produits</button>
+          <button class="product-category-tab" data-cat="etancheite">Étanchéité</button>
+          <button class="product-category-tab" data-cat="anticorrosion">Anti-corrosion</button>
+          <button class="product-category-tab" data-cat="eau-potable">Eau potable</button>
+          <button class="product-category-tab" data-cat="bois">Protection bois</button>
+          <button class="product-category-tab" data-cat="primaire">Primaire</button>
+          <button class="product-category-tab" data-cat="thermique">Thermique</button>
+          <button class="product-category-tab" data-cat="finitions">Finitions</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Produits -->
+    <section class="section-xl bg-background">
+      <div class="mx-auto max-w-7xl px-6">
+
+        <!-- Étanchéité -->
+        <div class="category-section active mb-20" data-section="all etancheite">
+          <div class="text-center mb-10 reveal">
+            <h2 class="text-2xl font-800 text-foreground inline-block border-b-2 border-accent pb-2">Résines d'étanchéité</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="product-grid-card reveal stagger-1">
+              <div class="product-grid-img"><img src="images/repco-aqua.png" alt="REPCO AQUA — bidons de résine d'étanchéité liquide" loading="lazy"></div>
+              <div class="product-grid-header">REPCO AQUA</div>
+              <div class="product-grid-card-body">
+                <p class="text-sm text-muted-foreground leading-relaxed">L'excellence de l'étanchéité polyuréthane sans solvant. Protégez durablement tous vos supports (béton, métal, bois) avec une membrane liquide continue, sans microporosités et ultra-résistante. Certifiée ACS pour le contact eau potable.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Sans solvant</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>ACS</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>CSTB</span>
+                </div>
+              </div>
+            </div>
+            <div class="product-grid-card reveal stagger-2">
+              <div class="product-grid-img"><img src="images/repco-flex.png" alt="REPCO FLEX — bidons de membrane élastomère" loading="lazy"></div>
+              <div class="product-grid-header">REPCO FLEX</div>
+              <div class="product-grid-card-body">
+                <p class="text-sm text-muted-foreground leading-relaxed">L'excellence certifiée pour l'étanchéité liquide de vos toitures. Protection absolue en neuf comme en rénovation. Allongement à la rupture supérieur à 400%, résistance extrême à l'eau, à la compression et aux UV.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>CSTB</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Élasticité 400%</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Anti-UV</span>
+                </div>
+              </div>
+            </div>
+            <div class="product-grid-card reveal stagger-3">
+              <div class="product-grid-img"><img src="images/repco-flex.png" alt="REPCO FLEX N — bidons d'étanchéité haute résistance" loading="lazy"></div>
+              <div class="product-grid-header">REPCO FLEX N</div>
+              <div class="product-grid-card-body">
+                <p class="text-sm text-muted-foreground leading-relaxed">L'étanchéité décontaminable et résistante aux rayonnements pour installations sensibles. Une technologie sans solvant, sans odeur, pour sécuriser vos structures béton et métal face aux exigences de l'industrie énergétique.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Décontaminable</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Sans odeur</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>HQE A+</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Anti-corrosion -->
+        <div class="category-section active mb-20" data-section="all anticorrosion">
+          <div class="text-center mb-10 reveal">
+            <h2 class="text-2xl font-800 text-foreground inline-block border-b-2 border-accent pb-2">Résines Anti-corrosion</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div class="product-grid-card reveal stagger-1">
+              <div class="product-grid-img"><img src="images/repco-marine.png" alt="REPCO MARINE — bidons de revêtement époxy marin" loading="lazy"></div>
+              <div class="product-grid-header">REPCO MARINE</div>
+              <div class="product-grid-card-body">
+                <p class="text-sm text-muted-foreground leading-relaxed">L'armure anticorrosion et anti-abrasion des structures métalliques et maritimes. Une technologie bicomposante sans solvant à forte adhésion (23 MPa), conçue pour résister durablement à l'humidité, au sel et aux produits chimiques.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Adhésion 23 MPa</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Offshore</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Anti-osmose</span>
+                </div>
+              </div>
+            </div>
+            <div class="product-grid-card reveal stagger-2">
+              <div class="product-grid-img"><img src="images/repco-sol.png" alt="REPCO SOL INDUS — bidons de revêtement anticorrosion industriel" loading="lazy"></div>
+              <div class="product-grid-header">REPCO SOL INDUS</div>
+              <div class="product-grid-card-body">
+                <p class="text-sm text-muted-foreground leading-relaxed">Le revêtement anticorrosion sans solvant pour environnements chimiques sévères. Une technologie bicomposante à haute performance mécanique, certifiée HQE A+, pour protéger durablement tous vos ouvrages industriels.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Résistance chimique</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>HQE A+</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Fort trafic</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Eau potable -->
+        <div class="category-section active mb-20" data-section="all eau-potable">
+          <div class="text-center mb-10 reveal">
+            <h2 class="text-2xl font-800 text-foreground inline-block border-b-2 border-accent pb-2">Eau potable &amp; Alimentarité</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div class="product-grid-card reveal stagger-1">
+              <div class="product-grid-img"><img src="images/repco-aqua.png" alt="REPCO AQUA — bidons de résine certifiée eau potable" loading="lazy"></div>
+              <div class="product-grid-header">REPCO AQUA</div>
+              <div class="product-grid-card-body">
+                <p class="text-sm text-muted-foreground leading-relaxed">Certifiée ACS pour le contact direct avec l'eau potable et les denrées alimentaires. La solution de référence pour réservoirs, cuves, bassins et canalisations, conforme aux normes sanitaires les plus strictes.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>ACS certifiée</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Contact alimentaire</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Sans solvant</span>
+                </div>
+              </div>
+            </div>
+            <div class="product-grid-card reveal stagger-2">
+              <div class="product-grid-img"><img src="images/repco-flex.png" alt="REPCO FLEX — bidons pour cuves et réservoirs" loading="lazy"></div>
+              <div class="product-grid-header">REPCO FLEX</div>
+              <div class="product-grid-card-body">
+                <p class="text-sm text-muted-foreground leading-relaxed">La membrane souple adaptée aux cuves et réservoirs de stockage. Résistance aux acides organiques, aux graisses et aux détergents, avec une élasticité qui absorbe les mouvements de structure sans fissurer.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Cuves &amp; réservoirs</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Résistance acides</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>ISO 9001</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Protection du bois -->
+        <div class="category-section active mb-20" data-section="all bois">
+          <div class="text-center mb-10 reveal">
+            <h2 class="text-2xl font-800 text-foreground inline-block border-b-2 border-accent pb-2">Protection du Bois</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div class="product-grid-card reveal stagger-1">
+              <div class="product-grid-img"><img src="images/repco-bois.png" alt="REPCO BOIS — bidons de protection du bois" loading="lazy"></div>
+              <div class="product-grid-header">REPCO BOIS</div>
+              <div class="product-grid-card-body">
+                <p class="text-sm text-muted-foreground leading-relaxed">Membrane liquide ultra-flexible pour une protection totale des supports en bois. Son élasticité absorbe les variations dimensionnelles du bois sans jamais se fissurer. Barrière continue contre les infiltrations et le pourrissement.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Ultra-flexible</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Anti-pourrissement</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Biosourcé</span>
+                </div>
+              </div>
+            </div>
+            <div class="product-grid-card reveal stagger-2">
+              <div class="product-grid-img"><img src="images/repco-bois.png" alt="REPCO BOIS PLUS — bidons de protection renforcée du bois" loading="lazy"></div>
+              <div class="product-grid-header">REPCO BOIS PLUS</div>
+              <div class="product-grid-card-body">
+                <p class="text-sm text-muted-foreground leading-relaxed">La version renforcée pour terrasses, bardages et structures extérieures très exposées. Formulation biosourcée sans solvant, résistance prolongée aux UV, à l'humidité et aux intempéries.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Extérieur</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Anti-UV</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>HQE</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Primaire -->
+        <div class="category-section active mb-20" data-section="all primaire">
+          <div class="text-center mb-10 reveal">
+            <h2 class="text-2xl font-800 text-foreground inline-block border-b-2 border-accent pb-2">Primaire sans solvant</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div class="product-grid-card reveal stagger-1">
+              <div class="product-grid-img"><img src="images/repco-primer.png" alt="REPCO PRIMER — bidons de primaire d'accrochage" loading="lazy"></div>
+              <div class="product-grid-header">REPCO PRIMER</div>
+              <div class="product-grid-card-body">
+                <p class="text-sm text-muted-foreground leading-relaxed">Primaire d'accrochage universel sans solvant pour béton, mortier et supports poreux. Améliore l'adhérence des systèmes REPCO, réduit l'absorption et consolide les surfaces friables.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Multi-supports</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Sans solvant</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>CE</span>
+                </div>
+              </div>
+            </div>
+            <div class="product-grid-card reveal stagger-2">
+              <div class="product-grid-img"><img src="images/repco-primer.png" alt="REPCO PRIMER EPOXY — bidons de primaire époxy" loading="lazy"></div>
+              <div class="product-grid-header">REPCO PRIMER EPOXY</div>
+              <div class="product-grid-card-body">
+                <p class="text-sm text-muted-foreground leading-relaxed">Primaire époxy bicomposant ultra-pénétrant pour supports métalliques et béton dense. Séchage rapide, très forte adhérence, protection anticorrosion de base sous les systèmes REPCO.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Époxy bicomposant</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Métal &amp; béton</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Séchage rapide</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Thermique -->
+        <div class="category-section active mb-20" data-section="all thermique">
+          <div class="text-center mb-10 reveal">
+            <h2 class="text-2xl font-800 text-foreground inline-block border-b-2 border-accent pb-2">Protection Thermique</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            <div class="product-grid-card reveal stagger-1">
+              <div class="product-grid-img"><img src="images/repco-therm.png" alt="REPCO THERM — résine protection thermique" loading="lazy"></div>
+              <div class="product-grid-header">REPCO THERM</div>
+              <div class="product-grid-card-body">
+                <p class="text-sm text-muted-foreground leading-relaxed">Résine thermique haute performance pour structures soumises à des variations extrêmes de température. Formulée sans solvant, résistante de –30°C à +180°C. Idéale pour les installations industrielles, énergétiques et les toitures chaudes.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>–30°C / +180°C</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Isolation thermique</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>HQE A+</span>
+                </div>
+              </div>
+            </div>
+            <div class="product-grid-card reveal stagger-2">
+              <div class="product-grid-img"><img src="images/repco-therm.png" alt="REPCO THERM PLUS — résine thermique renforcée" loading="lazy"></div>
+              <div class="product-grid-header">REPCO THERM PLUS</div>
+              <div class="product-grid-card-body">
+                <p class="text-sm text-muted-foreground leading-relaxed">Version renforcée avec charge minérale pour les environnements à très haute température. Résistance prolongée jusqu'à +220°C, adhérence extrême sur acier et béton réfractaire. Certifiée pour l'industrie pétrolière et chimique.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Jusqu'à +220°C</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Pétrochimie</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>ISO 9001</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Finitions -->
+        <div class="category-section active mb-12" data-section="all finitions">
+          <div class="text-center mb-10 reveal">
+            <h2 class="text-2xl font-800 text-foreground inline-block border-b-2 border-accent pb-2">Finitions &amp; Revêtements</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="product-grid-card reveal stagger-1">
+              <div class="product-grid-img"><img src="images/repco-sol.png" alt="REPCO SOL INDUS — revêtement finition sol industriel" loading="lazy"></div>
+              <div class="product-grid-header">REPCO SOL INDUS</div>
+              <div class="product-grid-card-body">
+                <p class="text-sm text-muted-foreground leading-relaxed">Revêtement de finition haute résistance pour sols industriels et entrepôts. Surface lisse, facile à nettoyer, résistante aux acides, huiles et charges mécaniques lourdes.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Anti-dérapant</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Fort trafic</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>ISO 9001</span>
+                </div>
+              </div>
+            </div>
+            <div class="product-grid-card reveal stagger-2">
+              <div class="product-grid-img"><img src="images/repco-flex.png" alt="REPCO FLEX FINITION — couche de finition polyuréthane" loading="lazy"></div>
+              <div class="product-grid-header">REPCO FLEX FINITION</div>
+              <div class="product-grid-card-body">
+                <p class="text-sm text-muted-foreground leading-relaxed">Couche de finition polyuréthane pour façades et surfaces exposées. Protège les systèmes d'étanchéité des UV et des agressions atmosphériques. Disponible en plusieurs coloris.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Protection UV</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Multi-coloris</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>HQE</span>
+                </div>
+              </div>
+            </div>
+            <div class="product-grid-card reveal stagger-3">
+              <div class="product-grid-img"><img src="images/repco-coat.png" alt="REPCO COAT — revêtement protecteur toutes surfaces" loading="lazy"></div>
+              <div class="product-grid-header">REPCO COAT</div>
+              <div class="product-grid-card-body">
+                <p class="text-sm text-muted-foreground leading-relaxed">Revêtement protecteur polyvalent pour façades, murs et structures extérieures. Finition longue durée, haute résistance aux UV et aux graffitis, imperméable à l'eau mais respirant.</p>
+                <div class="flex flex-wrap gap-2">
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Anti-UV</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Anti-graffiti</span>
+                  <span class="certification-badge"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Respirant</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA Contact -->
+    <section class="section-xl bg-primary relative overflow-hidden">
+      <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image:radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px);background-size:28px 28px"></div>
+      <div class="mx-auto max-w-4xl px-6 text-center relative z-10">
+        <div class="flex items-center justify-center gap-3 mb-4">
+          <span class="w-6 h-0.5 bg-accent"></span>
+          <span class="text-xs font-700 uppercase tracking-[0.35em] text-accent">Contact</span>
+          <span class="w-6 h-0.5 bg-accent"></span>
+        </div>
+        <h2 class="text-section-title text-white mb-4">Un projet ? <span class="font-serif italic text-accent">Parlons-en.</span></h2>
+        <p class="text-white/60 text-lg mb-8 max-w-lg mx-auto">Notre équipe technique analyse vos besoins et vous propose la solution d'étanchéité la plus adaptée à votre environnement.</p>
+        <a href="index.html#contact" class="btn-shimmer group inline-flex items-center gap-3 px-10 py-4 rounded-full bg-accent text-white font-700 text-sm hover:opacity-90 transition-all duration-300 shadow-lg" style="box-shadow:0 6px 24px rgba(204,0,0,0.4)">
+          Contactez-nous
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="transition-transform group-hover:translate-x-1"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary border-t border-white/10 py-16">
+      <div class="mx-auto max-w-7xl px-6">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-10 mb-10">
+          <div>
+            <a href="index.html" class="logo-link inline-block mb-3"><img src="images/logo-white.svg" alt="Repco" class="logo-svg"></a>
+            <p class="text-white/40 text-sm font-500 max-w-xs">Fabricant de résines d'étanchéité certifiées — Tunisie, depuis 1995.</p>
+          </div>
+          <nav class="flex flex-wrap gap-x-6 gap-y-3">
+            <a href="index.html#about" class="text-sm font-500 text-white/50 hover:text-white transition-colors min-h-[44px] flex items-center">Qui sommes-nous</a>
+            <a href="index.html#process" class="text-sm font-500 text-white/50 hover:text-white transition-colors min-h-[44px] flex items-center">Processus</a>
+            <a href="index.html#sectors" class="text-sm font-500 text-white/50 hover:text-white transition-colors min-h-[44px] flex items-center">Secteurs</a>
+            <a href="products.html" class="text-sm font-500 text-accent min-h-[44px] flex items-center">Produits</a>
+            <a href="index.html#realisations" class="text-sm font-500 text-white/50 hover:text-white transition-colors min-h-[44px] flex items-center">Réalisations</a>
+            <a href="index.html#contact" class="text-sm font-500 text-white/50 hover:text-white transition-colors min-h-[44px] flex items-center">Contact</a>
+          </nav>
+        </div>
+        <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p class="text-xs text-white/30 font-500">© 2026 Repco Tunisie. Tous droits réservés.</p>
+          <div class="flex items-center gap-4">
+            <a href="#" class="text-xs font-600 text-white/40 hover:text-white transition-colors min-h-[44px] flex items-center">LinkedIn</a>
+            <a href="#" class="text-xs font-600 text-white/40 hover:text-white transition-colors min-h-[44px] flex items-center">Facebook</a>
+            <a href="#" class="text-xs font-600 text-white/40 hover:text-white transition-colors min-h-[44px] flex items-center">YouTube</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="js/app.js"></script>
+  <script>
+    // Filtres catégories produits
+    const tabs = document.querySelectorAll('.product-category-tab');
+    const sections = document.querySelectorAll('.category-section');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const cat = tab.dataset.cat;
+        tabs.forEach((t) => t.classList.remove('active'));
+        tab.classList.add('active');
+        sections.forEach((sec) => {
+          const cats = (sec.dataset.section || '').split(' ');
+          if (cat === 'all' || cats.includes(cat)) {
+            sec.classList.add('active');
+          } else {
+            sec.classList.remove('active');
+          }
+        });
+        // Re-observe newly visible cards for reveal
+        document.querySelectorAll('.category-section.active .product-grid-card:not(.active)').forEach(el => {
+          el.classList.add('active');
+        });
+      });
+    });
+
+    // Reveal on scroll
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('active'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal, .product-grid-card').forEach(el => revealObs.observe(el));
+
+    // Dropdown nav
+    document.querySelectorAll('.nav-dropdown-wrap').forEach((wrap) => {
+      const btn = wrap.querySelector('.nav-dropdown-btn');
+      const menu = wrap.querySelector('.nav-dropdown-menu');
+      if (!btn || !menu) return;
+      let t;
+      wrap.addEventListener('mouseenter', () => { clearTimeout(t); menu.classList.remove('hidden'); btn.querySelector('.nav-dropdown-chevron')?.style.setProperty('transform','rotate(180deg)'); });
+      wrap.addEventListener('mouseleave', () => { t = setTimeout(() => { menu.classList.add('hidden'); btn.querySelector('.nav-dropdown-chevron')?.style.removeProperty('transform'); }, 120); });
+      btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+      document.addEventListener('click', e => { if (!wrap.contains(e.target)) menu.classList.add('hidden'); });
+    });
+
+    // Mobile menu
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const overlay = document.createElement('div');
+    overlay.className = 'fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden hidden';
+    document.body.appendChild(overlay);
+    document.querySelector('header button[aria-label="Ouvrir le menu"]')?.addEventListener('click', () => { mobileMenu?.classList.add('open'); overlay.classList.remove('hidden'); document.body.style.overflow = 'hidden'; });
+    document.querySelector('.mobile-menu button[aria-label="Fermer le menu"]')?.addEventListener('click', () => { mobileMenu?.classList.remove('open'); overlay.classList.add('hidden'); document.body.style.overflow = ''; });
+    overlay.addEventListener('click', () => { mobileMenu?.classList.remove('open'); overlay.classList.add('hidden'); document.body.style.overflow = ''; });
+
+    // Scroll progress
+    const progress = document.querySelector('.scroll-progress');
+    window.addEventListener('scroll', () => {
+      if (progress) { const d = document.documentElement.scrollHeight - window.innerHeight; progress.style.width = d > 0 ? `${(window.scrollY/d)*100}%` : '0%'; }
+    }, { passive: true });
+
+    // Nav scroll
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY > 60;
+      header?.classList.toggle('nav-scrolled', scrolled);
+      header?.classList.toggle('py-3', scrolled);
+      header?.classList.toggle('py-5', !scrolled);
+      const logo = header?.querySelector('.logo-svg');
+      if (logo) logo.src = scrolled ? (logo.dataset.logoDark || 'images/logo-dark.svg') : (logo.dataset.logoLight || 'images/logo-white.svg');
+    }, { passive: true });
+  </script>
+</body>
+</html>

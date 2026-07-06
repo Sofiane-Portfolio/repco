@@ -1,0 +1,1083 @@
+/* ── Logo sans fond ── */
+.logo-link { display: flex; align-items: center; }
+.logo-svg {
+  height: 3rem;
+  width: auto;
+  background: transparent !important;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.logo-link:hover .logo-svg { transform: scale(1.04); }
+header:not(.nav-scrolled) .logo-svg,
+.mobile-menu .logo-svg,
+footer .logo-svg { height: 3rem; }
+header.nav-scrolled .logo-svg { height: 2.75rem; }
+.mobile-menu .logo-svg,
+footer .logo-svg { height: 2.25rem; }
+
+/* Supprimer les fonds gris hérités */
+.bg-gray-200 { background-color: transparent !important; }
+
+/* ── Hero amélioré ── */
+#hero { min-height: 100vh; min-height: 100dvh; }
+.hero-bg img {
+  animation: heroKenBurns 22s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+@keyframes heroKenBurns {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+.hero-content > * {
+  opacity: 0;
+  transform: translateY(28px);
+  animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.hero-content > *:nth-child(1) { animation-delay: 0.15s; }
+.hero-content > *:nth-child(2) { animation-delay: 0.35s; }
+.hero-content > *:nth-child(3) { animation-delay: 0.55s; }
+.hero-content > *:nth-child(4) { animation-delay: 0.75s; }
+.hero-content > *:nth-child(5) { animation-delay: 0.95s; }
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-stat {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.7s ease forwards;
+}
+.hero-stat:nth-child(1) { animation-delay: 0.9s; }
+.hero-stat:nth-child(2) { animation-delay: 1.05s; }
+.hero-stat:nth-child(3) { animation-delay: 1.2s; }
+.hero-stat:nth-child(4) { animation-delay: 1.35s; }
+.scroll-indicator {
+  animation: bounceDown 2s ease-in-out infinite;
+}
+@keyframes bounceDown {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 8px); }
+}
+
+/* ── Sections plus spacieuses ── */
+section { scroll-margin-top: 6rem; }
+#process { scroll-margin-top: 5rem; }
+.section-xl { padding-top: 7rem; padding-bottom: 7rem; }
+@media (min-width: 768px) {
+  .section-xl { padding-top: 9rem; padding-bottom: 9rem; }
+}
+
+/* ── Animations scroll ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal-left.active { opacity: 1; transform: translateX(0); }
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal-right.active { opacity: 1; transform: translateX(0); }
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-scale.active { opacity: 1; transform: scale(1); }
+
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+.stagger-6 { transition-delay: 0.6s; }
+
+/* ── Compteurs animés ── */
+.stat-counter {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Galerie défilante ── */
+.gallery-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.gallery-track {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+.gallery-track:hover { animation-play-state: paused; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.gallery-item {
+  flex-shrink: 0;
+  width: 320px;
+  height: 220px;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(26, 39, 68, 0.15);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+.gallery-item:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 28px 60px rgba(26, 39, 68, 0.22);
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+.gallery-item:hover img { transform: scale(1.08); }
+.gallery-item span {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+/* ── Processus ── */
+.process-step {
+  position: relative;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  background: var(--card, #fff);
+  border: 1px solid var(--border, #e5e7eb);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.process-step:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(26, 39, 68, 0.1);
+  border-color: rgba(230, 57, 70, 0.3);
+}
+.process-num {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(230, 57, 70, 0.15);
+  margin-bottom: 1rem;
+  transition: color 0.4s ease;
+}
+.process-step:hover .process-num { color: rgba(230, 57, 70, 0.35); }
+
+/* ── Timeline histoire ── */
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+@media (min-width: 1024px) {
+  .story-grid { grid-template-columns: 1fr 1fr; gap: 5rem; }
+}
+.story-image {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  box-shadow: 0 32px 64px rgba(26, 39, 68, 0.18);
+}
+.story-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.story-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(230,57,70,0.15), transparent 60%);
+  pointer-events: none;
+}
+.timeline-item {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--border, #e5e7eb);
+}
+.timeline-year {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--accent, #e63946);
+  min-width: 4rem;
+}
+
+/* ── Témoignages ── */
+.testimonial-card {
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  transition: transform 0.4s ease, border-color 0.4s ease;
+}
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(230, 57, 70, 0.4);
+}
+.testimonial-quote {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.75);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), #ff6b6b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: #fff;
+  font-size: 0.875rem;
+}
+
+/* ── FAQ accordéon ── */
+.faq-item {
+  border-bottom: 1px solid var(--border, #e5e7eb);
+}
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  text-align: left;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--foreground);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.faq-question:hover { color: var(--accent); }
+.faq-question svg {
+  flex-shrink: 0;
+  transition: transform 0.35s ease;
+}
+.faq-item.open .faq-question svg { transform: rotate(180deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1), padding 0.45s ease;
+  color: var(--muted-foreground);
+  line-height: 1.7;
+}
+.faq-item.open .faq-answer {
+  max-height: 300px;
+  padding-bottom: 1.5rem;
+}
+
+/* ── CTA bandeau ── */
+.cta-banner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2rem;
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, var(--primary) 0%, #243656 50%, var(--primary) 100%);
+  text-align: center;
+}
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('../images/hero.jpg') center/cover;
+  opacity: 0.12;
+  mix-blend-mode: luminosity;
+}
+.cta-banner::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 60%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(230,57,70,0.25), transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Produits & cartes améliorés ── */
+.product-card {
+  border-radius: 1.5rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  transition: box-shadow 0.5s ease, transform 0.5s ease;
+}
+.product-card:hover {
+  box-shadow: 0 32px 64px rgba(26, 39, 68, 0.12);
+  transform: translateY(-4px);
+}
+.product-card img { transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+.product-card:hover img { transform: scale(1.06); }
+
+
+.realisation-card .clip-reveal { height: 16rem; }
+.realisation-card img { height: 100%; width: 100%; object-fit: cover; }
+
+/* ── Partenaires bande ── */
+.partners-band {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem 3rem;
+  align-items: center;
+}
+.partner-badge {
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted-foreground);
+  transition: all 0.3s ease;
+}
+.partner-badge:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ── Floating accent orbs ── */
+.float-orb {
+  animation: floatOrb 8s ease-in-out infinite;
+}
+.float-orb-delay { animation-delay: -4s; }
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(12px, -18px); }
+}
+
+/* ── Nav améliorée ── */
+header { transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+
+/* ── Formulaire focus glow ── */
+.contact-input:focus {
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.25);
+}
+
+/* ── Smooth scroll global ── */
+html { scroll-behavior: smooth; }
+
+/* ── Barre de progression scroll ── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), #ff6b6b);
+  z-index: 100;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+/* ── Photos pro : chargement & qualité ── */
+.pro-photo {
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+  image-rendering: -webkit-optimize-contrast;
+}
+.pro-photo.loaded,
+.clip-reveal.active .pro-photo {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Cadre photo avec reflet au hover ── */
+.photo-frame {
+  position: relative;
+  overflow: hidden;
+}
+.photo-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 60%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+.photo-frame:hover::after {
+  transform: translateX(120%);
+}
+
+/* ── Secteurs : tilt 3D subtil (legacy) ── */
+.sector-card-wrapper { perspective: 1200px; }
+
+/* ── Produits : zoom image au scroll ── */
+.product-card .pro-photo {
+  transition: opacity 1s ease, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.product-card.active .pro-photo,
+.product-card:hover .pro-photo {
+  transform: scale(1.08);
+}
+
+/* ── Réalisations : lift + couleur ── */
+.realisation-card {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.realisation-card:hover {
+  transform: translateY(-8px);
+}
+.realisation-card .photo-frame img {
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), filter 0.7s ease;
+}
+.realisation-card:hover .photo-frame img {
+  transform: scale(1.1);
+  filter: grayscale(0) saturate(1.1);
+}
+
+/* ── Galerie plus grande ── */
+.gallery-item {
+  width: 420px;
+  height: 280px;
+}
+.gallery-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26, 39, 68, 0.75) 0%, transparent 55%);
+  z-index: 1;
+  opacity: 0.85;
+  transition: opacity 0.4s ease;
+}
+.gallery-item:hover::before { opacity: 1; }
+.gallery-item span { z-index: 2; }
+
+/* ── Certifications & process : pop-in ── */
+.cert-item {
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.45s ease, border-color 0.45s ease;
+}
+.cert-item.active,
+.cert-item:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+.process-step.active {
+  animation: stepPop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+@keyframes stepPop {
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── Story image parallax interne ── */
+.story-image img {
+  transition: transform 0.1s linear;
+}
+.story-image:hover img {
+  transform: scale(1.04);
+}
+
+/* ── Blocs reveal améliorés ── */
+.reveal-blur {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(30px);
+  transition: opacity 0.9s ease, filter 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-blur.active {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+/* ── Testimonial slide-up ── */
+.testimonial-card {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease, box-shadow 0.5s ease;
+}
+.testimonial-card.active {
+  animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.testimonial-card:hover {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* ── Cards produits type Kemica ── */
+.repco-product-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease;
+}
+.repco-product-card.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.repco-product-card.active:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 56px rgba(26,39,68,0.13);
+}
+.repco-product-img {
+  height: 230px;
+  overflow: hidden;
+  background: #ffffff;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.repco-product-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.repco-product-card:hover .repco-product-img img { transform: scale(1.06); }
+.repco-product-header {
+  background: var(--primary);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.875rem 1.25rem;
+  letter-spacing: 0.01em;
+}
+.repco-product-body {
+  padding: 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+.repco-product-body p {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  line-height: 1.6;
+  flex: 1;
+}
+.repco-product-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.repco-product-tags span {
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  background: rgba(204,0,0,0.08);
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.repco-product-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  margin: 0 1.25rem 1.25rem auto;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.repco-product-card:hover .repco-product-arrow {
+  background: var(--accent);
+  transform: translateX(3px);
+}
+
+/* ── Secteurs d'activité — grid propre ── */
+.sectors-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .sectors-grid {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 260px 260px;
+  }
+  .sector-card.sector-large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+}
+.sector-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  cursor: pointer;
+  height: 220px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s ease;
+}
+.sector-card.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (min-width: 768px) {
+  .sector-card { height: auto; }
+}
+.sector-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease;
+  filter: grayscale(20%);
+}
+.sector-card:hover img {
+  transform: scale(1.08);
+  filter: grayscale(0);
+}
+.sector-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(26,39,68,0.88) 0%, rgba(26,39,68,0.35) 55%, transparent 100%);
+  transition: opacity 0.4s ease;
+}
+.sector-card:hover .sector-overlay { opacity: 0.9; }
+.sector-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  z-index: 2;
+}
+.sector-large .sector-content { padding: 2rem; }
+.sector-tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.6rem;
+}
+.sector-title {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+.sector-desc {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.5;
+}
+.sector-title-sm {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 0.35rem;
+}
+.sector-desc-sm {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.4;
+}
+
+/* ── Mur de partenaires ── */
+.partners-wall {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem 3.5rem;
+  max-width: 56rem;
+  margin: 0 auto;
+}
+.partners-wall span {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(26, 39, 68, 0.32);
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: default;
+}
+.partners-wall span:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ── Dropdown navigation ── */
+.nav-dropdown-wrap { position: relative; }
+.nav-dropdown-menu {
+  animation: dropdownFade 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes dropdownFade {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.nav-dropdown-btn:focus-visible + .nav-dropdown-menu,
+.nav-dropdown-wrap:focus-within .nav-dropdown-menu { display: block; }
+.nav-scrolled .nav-dropdown-btn { color: var(--foreground) !important; }
+.nav-scrolled .nav-dropdown-menu { background: var(--card); }
+
+/* ── Clients partenaires badges ── */
+.client-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--muted-foreground);
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.client-badge:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(230, 57, 70, 0.12);
+}
+
+/* ── Certifications badge items ── */
+.cert-badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-radius: 1.25rem;
+  border: 1px solid var(--border);
+  background: var(--card);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cert-badge-item:hover {
+  border-color: var(--accent);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(230, 57, 70, 0.1);
+}
+.cert-badge-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: rgba(230, 57, 70, 0.1);
+  color: var(--accent);
+  font-size: 1rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  transition: background 0.3s ease;
+}
+.cert-badge-item:hover .cert-badge-icon {
+  background: var(--accent);
+  color: #fff;
+}
+.cert-badge-name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--foreground);
+  margin-bottom: 0.25rem;
+}
+.cert-badge-desc {
+  font-size: 0.72rem;
+  color: var(--muted-foreground);
+  line-height: 1.3;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   UPGRADE v2 — Boutons premium, cartes, animations
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Boutons avec effet shimmer sweep ── */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(255,255,255,0.28) 50%,
+    transparent 65%
+  );
+  transform: translateX(-120%) skewX(-10deg);
+  pointer-events: none;
+  transition: none;
+}
+.btn-shimmer:hover::before {
+  animation: shimmerSweep 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+@keyframes shimmerSweep {
+  to { transform: translateX(220%) skewX(-10deg); }
+}
+
+/* ── Product card homepage — redesign premium ── */
+.repco-product-card {
+  border-top: 3px solid transparent !important;
+  transition: opacity 0.7s ease, transform 0.5s cubic-bezier(0.22,1,0.36,1),
+    box-shadow 0.5s ease, border-top-color 0.35s ease !important;
+  will-change: transform;
+}
+.repco-product-card.active:hover {
+  transform: translateY(-10px) !important;
+  box-shadow: 0 30px 64px rgba(26,39,68,0.16), 0 0 0 1px rgba(204,0,0,0.14) !important;
+  border-top-color: var(--accent) !important;
+}
+.repco-product-img::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 35%;
+  background: linear-gradient(to top, rgba(245,245,243,0.55), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+.repco-product-header {
+  background: linear-gradient(135deg, var(--primary) 0%, #1e3060 100%);
+  letter-spacing: 0.04em;
+  transition: background 0.35s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.repco-product-card:hover .repco-product-header {
+  background: linear-gradient(135deg, #b00000 0%, var(--accent) 100%);
+}
+.repco-product-arrow {
+  box-shadow: 0 4px 12px rgba(26,39,68,0.25);
+  transition: background 0.3s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;
+}
+.repco-product-card:hover .repco-product-arrow {
+  background: var(--accent) !important;
+  transform: translateX(6px) rotate(-15deg) !important;
+  box-shadow: 0 6px 18px rgba(204,0,0,0.45);
+}
+
+/* ── Product grid cards (products.html) ── */
+.product-grid-card {
+  border-top: 3px solid transparent !important;
+  transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), box-shadow 0.45s ease, border-top-color 0.35s ease !important;
+}
+.product-grid-card:hover {
+  transform: translateY(-10px) !important;
+  box-shadow: 0 30px 64px rgba(26,39,68,0.14), 0 0 0 1px rgba(204,0,0,0.12) !important;
+  border-top-color: var(--accent) !important;
+}
+.product-grid-header {
+  background: linear-gradient(135deg, var(--primary) 0%, #1e3060 100%) !important;
+  letter-spacing: 0.04em;
+  transition: background 0.35s ease !important;
+}
+.product-grid-card:hover .product-grid-header {
+  background: linear-gradient(135deg, #b00000 0%, var(--accent) 100%) !important;
+}
+
+/* ── Partners wall → pill badges ── */
+.partners-wall {
+  gap: 0.75rem 1rem !important;
+}
+.partners-wall span {
+  padding: 0.45rem 1.1rem !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 9999px !important;
+  background: var(--card) !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  color: var(--muted-foreground) !important;
+  cursor: default;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.3s cubic-bezier(0.22,1,0.36,1) !important;
+}
+.partners-wall span::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--muted-foreground);
+  flex-shrink: 0;
+  transition: background 0.3s ease;
+}
+.partners-wall span:hover {
+  border-color: var(--accent) !important;
+  color: var(--accent) !important;
+  transform: translateY(-4px) scale(1.06) !important;
+  box-shadow: 0 8px 24px rgba(204,0,0,0.13);
+  background: rgba(204,0,0,0.04) !important;
+}
+.partners-wall span:hover::before {
+  background: var(--accent);
+}
+
+/* ── Stat numbers — glow ── */
+.stat-number {
+  background: linear-gradient(135deg, var(--accent), #ff4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 12px rgba(204,0,0,0.25));
+}
+
+/* ── Product filter tabs shimmer ── */
+.product-category-tab {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.28s cubic-bezier(0.22,1,0.36,1) !important;
+}
+.product-category-tab::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.22) 50%, transparent 70%);
+  transform: translateX(-120%) skewX(-10deg);
+  pointer-events: none;
+}
+.product-category-tab:hover::after,
+.product-category-tab.active::after {
+  animation: shimmerSweep 0.6s ease forwards;
+}
+.product-category-tab.active {
+  box-shadow: 0 4px 16px rgba(204,0,0,0.3) !important;
+}
+
+/* ── Hero CTA button upgrade ── */
+#hero .btn-shimmer.bg-white {
+  box-shadow: 0 8px 32px rgba(255,255,255,0.2), 0 2px 8px rgba(0,0,0,0.1) !important;
+}
+#hero .btn-shimmer.bg-white:hover {
+  box-shadow: 0 12px 40px rgba(255,255,255,0.28), 0 4px 12px rgba(0,0,0,0.12) !important;
+}
+
+/* ── CTA buttons global ── */
+a[href="#contact"].bg-accent,
+a[href="index.html#contact"].bg-accent {
+  box-shadow: 0 4px 20px rgba(204,0,0,0.35) !important;
+  transition: all 0.3s cubic-bezier(0.22,1,0.36,1) !important;
+}
+a[href="#contact"].bg-accent:hover,
+a[href="index.html#contact"].bg-accent:hover {
+  box-shadow: 0 8px 32px rgba(204,0,0,0.5) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ── Scroll progress bar — plus visible ── */
+.scroll-progress {
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, #ff6060 60%, var(--accent) 100%) !important;
+  background-size: 200% 100%;
+  animation: progressGlow 3s linear infinite;
+}
+@keyframes progressGlow {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+/* ── Section titles — gradient underline ── */
+.products-section-title {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+.products-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  border-radius: 9999px;
+}
+
+/* ── Hover tilt sur les product cards ── */
+.repco-product-card, .product-grid-card {
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+
+/* ── "Voir toute la gamme" button premium ── */
+.btn-gamme {
+  background: linear-gradient(135deg, var(--primary) 0%, #243a6e 100%);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(26,39,68,0.3);
+  transition: all 0.4s cubic-bezier(0.22,1,0.36,1) !important;
+}
+.btn-gamme:hover {
+  background: linear-gradient(135deg, var(--accent) 0%, #b00000 100%) !important;
+  box-shadow: 0 12px 40px rgba(204,0,0,0.4) !important;
+  transform: translateY(-3px) !important;
+}
+.btn-gamme::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.18) 50%, transparent 65%);
+  transform: translateX(-120%) skewX(-10deg);
+  pointer-events: none;
+}
+.btn-gamme:hover::before {
+  animation: shimmerSweep 0.65s ease forwards;
+}
+
+/* ── Realisation card image glow on hover ── */
+.realisation-card:hover .clip-reveal {
+  box-shadow: 0 20px 48px rgba(26,39,68,0.3) !important;
+}
+
+/* ── Animate counter class ── */
+.stat-counter {
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s ease;
+}

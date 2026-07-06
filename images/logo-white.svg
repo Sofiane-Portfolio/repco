@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" fill="none" aria-hidden="true">
+  <g>
+    <rect x="0" y="8" width="14" height="32" rx="2" fill="#E63946" transform="skewX(-12)"/>
+    <rect x="18" y="8" width="8" height="32" rx="1.5" fill="#E63946" transform="skewX(-12)"/>
+    <rect x="30" y="8" width="8" height="32" rx="1.5" fill="#E63946" transform="skewX(-12)"/>
+    <rect x="42" y="8" width="8" height="32" rx="1.5" fill="#E63946" transform="skewX(-12)"/>
+    <rect x="54" y="8" width="8" height="32" rx="1.5" fill="#E63946" transform="skewX(-12)"/>
+    <rect x="66" y="8" width="8" height="32" rx="1.5" fill="#E63946" transform="skewX(-12)"/>
+  </g>
+  <text x="82" y="34" font-family="DM Sans, Arial, sans-serif" font-size="28" font-weight="800" font-style="italic" fill="#FFFFFF" letter-spacing="-0.02em">Repco</text>
+</svg>
