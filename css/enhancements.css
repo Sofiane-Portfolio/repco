@@ -405,14 +405,18 @@ html { scroll-behavior: smooth; }
 
 /* ── Photos pro : chargement & qualité ── */
 .pro-photo {
+  opacity: 1;
+  transform: scale(1);
+  image-rendering: -webkit-optimize-contrast;
+}
+html.js-enabled .pro-photo:not(.loaded) {
   opacity: 0;
   transform: scale(1.06);
   transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
-  image-rendering: -webkit-optimize-contrast;
 }
-.pro-photo.loaded,
-.clip-reveal.active .pro-photo {
+html.js-enabled .pro-photo.loaded,
+html.js-enabled .clip-reveal.active .pro-photo {
   opacity: 1;
   transform: scale(1);
 }
@@ -543,11 +547,15 @@ html { scroll-behavior: smooth; }
   overflow: hidden;
   text-decoration: none;
   color: inherit;
+  opacity: 1;
+  transform: translateY(0);
+}
+html.js-enabled .repco-product-card:not(.active) {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease;
 }
-.repco-product-card.active {
+html.js-enabled .repco-product-card.active {
   opacity: 1;
   transform: translateY(0);
 }
@@ -646,11 +654,15 @@ html { scroll-behavior: smooth; }
   border-radius: 1.25rem;
   cursor: pointer;
   height: 220px;
+  opacity: 1;
+  transform: translateY(0);
+}
+html.js-enabled .sector-card:not(.active) {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s ease;
 }
-.sector-card.active {
+html.js-enabled .sector-card.active {
   opacity: 1;
   transform: translateY(0);
 }

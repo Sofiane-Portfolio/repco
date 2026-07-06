@@ -3,6 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () {
+      var path = location.pathname;
+      var i = path.indexOf('/repco');
+      if (i !== -1) {
+        var base = document.createElement('base');
+        base.href = location.origin + path.slice(0, i + 6) + '/';
+        document.head.appendChild(base);
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/enhancements.css">
   <title>Repco — Solutions d'étanchéité certifiées Tunisie</title>

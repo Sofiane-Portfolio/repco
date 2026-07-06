@@ -1,4 +1,6 @@
 (function () {
+  document.documentElement.classList.add('js-enabled');
+
   const header = document.querySelector('header');
   const mobileMenu = document.querySelector('.mobile-menu');
   const menuOpenBtn = document.querySelector('header button[aria-label="Ouvrir le menu"]');
@@ -109,10 +111,8 @@
       markLoaded();
     } else {
       img.addEventListener('load', markLoaded, { once: true });
-      img.addEventListener('error', () => {
-        img.style.opacity = '0.3';
-        img.alt = 'Image indisponible';
-      }, { once: true });
+      img.addEventListener('error', markLoaded, { once: true });
+      setTimeout(markLoaded, 4000);
     }
   });
 
